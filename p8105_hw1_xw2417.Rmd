@@ -74,13 +74,13 @@ The vector created above is `r df_nrow` rows * `r df_ncol` columns. The mean of 
 This code chunk makes scatterplots of y vs x colored by logical variables created in Problem 2 data frame.
 
 ```{r yx_scatter_logical}
-ggplot(prob2_df, aes(x = x, y = y, color = vec_logical)) + geom_point() + labs(color = "x + y > 1")
+p_log = ggplot(prob2_df, aes(x = x, y = y, color = vec_logical)) + geom_point() + labs(color = "x + y > 1")
+p_log
 ```
 
 This code chunk makes scatterplots of y vs x colored by numeric variables created in Problem 2 data frame.
 
 ```{r yx_scatter_numeric}
-library(ggplot2)
 ggplot(prob2_df, aes(x = x, y = y, color = vec_numeric)) + geom_point() +labs(color = "x + y > 1")
 ```
 
@@ -93,3 +93,6 @@ ggplot(prob2_df, aes(x = x, y = y, color = vec_factor)) + geom_point() + labs(co
 **Comments:** We can use all these three three variable types (logical, numeric and factor) to define colors in scatter plots. For logical variables, there are only 2 colors assigned for either False or True; for numeric varibles, the colors are defined by a scale from the lowest value to the highest value; for factor variables, we need to see if the values in it are numeric or logical, and then  the colors are defined by the type of the values.
 
 This code chunk exports the scatterplot colored by the logical variable.
+```{r yx_scatter_exp}
+ggsave("yx_scaterplot.png", plot = p_log)
+```
