@@ -1,0 +1,13 @@
+---
+title: "p8105_hw1_xw2417"
+author: "Xun Wang"
+date: "9/20/2019"
+output: github_document
+---
+
+This is the solution for P8105 homework 1 from Xun Wang.
+
+## Problem 1
+
+## Problem 2
+
