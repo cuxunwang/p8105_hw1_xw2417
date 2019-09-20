@@ -13,9 +13,10 @@ library(tidyverse)
 
 ## Problem 1
 
-The code chunk below creates a dataframe compromised of a random sample of size 8 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 8, a factor vector of length 8 with 3 different factor “levels”.
+The code chunk below **creates a dataframe** compromised of a random sample of size 8 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 8, a factor vector of length 8 with 3 different factor “levels”.
 
 ```{r df_create}
+set.seed(1234)
 
 hw_df = tibble(
   vec_numeric = rnorm(8),
@@ -32,7 +33,19 @@ mean_char = mean(pull(hw_df, vec_char))
 mean_factor = mean(pull(hw_df, vec_factor))
 ```
 
+**Summary 1:** The **"mean"** works for numeric and logical variables but not for character or factor variables if the argument is not numeric or logical.
 
+The code chunk below **converts** the logical vector to numeric or a factor and **multiplies** the random sample by the result. And it converts the logical vector to a factor and then converts the result to numeric, and multiplies the random sample by the result.
+
+```{r df_convert}
+as.numeric(pull(hw_df, vec_logical))*pull(hw_df, vec_numeric)
+as.factor(pull(hw_df, vec_logical))*pull(hw_df, vec_numeric)
+as.numeric(as.factor(pull(hw_df, vec_logical)))*pull(hw_df, vec_numeric)
+```
+
+**Summary 2:** logical variables can be multiplied with numeric variables, but factors can't be multiplies.
 
 ## Problem 2
+
+The code chunk
 
