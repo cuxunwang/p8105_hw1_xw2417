@@ -43,7 +43,7 @@ as.factor(pull(prob1_df, vec_logical))*pull(prob1_df, vec_numeric)
 as.numeric(as.factor(pull(prob1_df, vec_logical)))*pull(prob1_df, vec_numeric)
 ```
 
-**Summary 2:** logical variables can be multiplied with numeric variables, but factors can't be multiplies.
+**Summary 2:** Logical variables can be multiplied with numeric variables, but factors can't be multiplies.
 
 ## Problem 2
 
@@ -70,3 +70,26 @@ pos_prop = sum(pull(prob2_df, vec_logical)) / length(pull(prob2_df, vec_logical)
 ```
 
 The vector created above is `r df_nrow` rows * `r df_ncol` columns. The mean of x is `r x_mean`. The median of x is `r x_median`. The standard deviationof x is `r x_sd`. The proportion of cases for which x + y > 1 is `r pos_prop`.
+
+This code chunk makes scatterplots of y vs x colored by logical variables created in Problem 2 data frame.
+
+```{r yx_scatter_logical}
+ggplot(prob2_df, aes(x = x, y = y, color = vec_logical)) + geom_point() + labs(color = "x + y > 1")
+```
+
+This code chunk makes scatterplots of y vs x colored by numeric variables created in Problem 2 data frame.
+
+```{r yx_scatter_numeric}
+library(ggplot2)
+ggplot(prob2_df, aes(x = x, y = y, color = vec_numeric)) + geom_point() +labs(color = "x + y > 1")
+```
+
+This code chunk makes scatterplots of y vs x colored by factor variables created in Problem 2 data frame.
+
+```{r yx_scatter_factor}
+ggplot(prob2_df, aes(x = x, y = y, color = vec_factor)) + geom_point() + labs(color = "x + y > 1")
+```
+
+**Comments:** We can use all these three three variable types (logical, numeric and factor) to define colors in scatter plots. For logical variables, there are only 2 colors assigned for either False or True; for numeric varibles, the colors are defined by a scale from the lowest value to the highest value; for factor variables, we need to see if the values in it are numeric or logical, and then  the colors are defined by the type of the values.
+
+This code chunk exports the scatterplot colored by the logical variable.
