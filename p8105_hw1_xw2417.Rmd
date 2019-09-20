@@ -94,5 +94,5 @@ ggplot(prob2_df, aes(x = x, y = y, color = vec_factor)) + geom_point() + labs(co
 
 This code chunk exports the scatterplot colored by the logical variable.
 ```{r yx_scatter_exp}
-ggsave("yx_scaterplot.png", plot = p_log)
+ggsave("yx_scatterplot.png", plot = p_log)
 ```
